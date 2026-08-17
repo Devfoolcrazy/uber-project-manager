@@ -1,8 +1,14 @@
+<p align="center">
+  <img src="src-tauri/icons/128x128%402x.png" width="128" alt="Icône Uber Project Manager" />
+</p>
+
 # Uber Project Manager
 
 Hub local pour garder la main sur tous ses projets, POC et expérimentations :
 une app de bureau macOS légère (Tauri + React + SQLite) qui référence chaque
 projet, le retrouve en trois lettres et l'ouvre dans l'IDE en une touche.
+
+![Fenêtre principale : liste des projets avec catégories, badges techno, branche git, taille disque et actions rapides](docs/screenshot-main.png)
 
 ## Fonctionnalités
 
