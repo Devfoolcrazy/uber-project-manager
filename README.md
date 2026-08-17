@@ -41,6 +41,8 @@ projet, le retrouve en trois lettres et l'ouvre dans l'IDE en une touche.
 - Pas de saisie libre dans le formulaire projet : on coche des tags existants,
   on choisit une catégorie dans la liste
 
+![Panneau de détail : description, lien repo, branche git, taille disque avec dossiers récupérables et changelog](docs/screenshot-drawer.png)
+
 ### Vérité du disque
 - Vérification du chemin à la création et au lancement : bannière listant les
   projets dont le dossier a disparu, badge « introuvable », bouton
