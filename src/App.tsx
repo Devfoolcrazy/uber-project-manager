@@ -70,6 +70,13 @@ export default function App() {
       })
       .catch((e) => setError(String(e)));
 
+  // The DB can change from outside the app (uberpm CLI, MCP server):
+  // re-read it whenever the window regains focus.
+  useEffect(() => {
+    window.addEventListener("focus", refresh);
+    return () => window.removeEventListener("focus", refresh);
+  }, []);
+
   useEffect(() => {
     refresh();
     getSettings()

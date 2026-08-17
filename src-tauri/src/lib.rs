@@ -1,5 +1,4 @@
 mod commands;
-mod db;
 
 use std::sync::Mutex;
 use tauri::Manager;
@@ -11,7 +10,7 @@ pub fn run() {
         .plugin(tauri_plugin_dialog::init())
         .setup(|app| {
             let app_data_dir = app.path().app_data_dir()?;
-            let conn = db::init_db(app_data_dir).map_err(std::io::Error::other)?;
+            let conn = uberpm_core::init_db(app_data_dir).map_err(std::io::Error::other)?;
             app.manage(commands::Db(Mutex::new(conn)));
             Ok(())
         })

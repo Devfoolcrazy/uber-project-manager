@@ -86,6 +86,41 @@ pnpm tauri build   # produit .app et .dmg dans src-tauri/target/release/bundle/
 
 L'app n'est pas signée : au premier lancement, clic droit → Ouvrir.
 
+## CLI & intégration LLM (`uberpm`)
+
+Un binaire compagnon partage la même base et les mêmes règles métier que
+l'app (crate `uberpm-core`) :
+
+```bash
+cargo install --path src-tauri/cli   # installe uberpm dans ~/.cargo/bin
+
+uberpm list                          # projets en cours (--archived, --json)
+uberpm search "auth supabase"        # fiches + changelogs
+uberpm scan ~/Projet --add-missing   # référence les dossiers manquants
+uberpm add --path ~/Projet/mon-poc --category POC --create-missing
+uberpm log mon-poc --add "premier jet de l'API"
+uberpm open mon-poc                  # ouvre dans l'IDE configuré (--finder, --terminal)
+```
+
+L'app relit la base quand sa fenêtre reprend le focus : les projets créés en
+CLI apparaissent sans redémarrage.
+
+### Serveur MCP
+
+`uberpm mcp` démarre un serveur [MCP](https://modelcontextprotocol.io)
+(stdio) exposant le registre à Claude Code ou tout autre client MCP :
+`list_projects`, `search_projects`, `create_project`, `update_project`,
+`scan_directory`, `add_changelog_entry`, `get_changelog`,
+`project_insights`, `list_categories`, `list_tags`.
+
+```bash
+claude mcp add uberpm -- ~/.cargo/bin/uberpm mcp
+```
+
+Ensuite, en langage naturel dans Claude Code : « scanne ~/Projet et
+référence ce qui manque », « c'était quel projet où je testais l'auth ? »,
+« ajoute une note au changelog de mon-poc ».
+
 ## Raccourcis
 
 | Touche | Action |
